@@ -1,14 +1,20 @@
 import { injectPropInComponent } from './utils';
 import { RouteParams } from './index';
-import { memo, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { useRouterContext } from './context/RouterContext';
-import { useRouter } from 'next/router';
+import {useRouter} from "next/router";
 
-interface Route extends RouteParams {
+export type Route = RouteParams & {
   path: string;
 }
 
-const Route = ({ children, defaultState }) => {
+type RouteProps = {
+  children: React.ReactElement;
+  defaultState?: object;
+}
+
+// @ts-ignore
+export const Route: React.FC<RouteProps> = memo(({ children, defaultState }: RouteProps) => {
   const router = useRouter();
 
   const { setData, data: contextData } = useRouterContext();
@@ -33,6 +39,4 @@ const Route = ({ children, defaultState }) => {
       })}
     </>
   );
-};
-
-export default memo(Route) as React.FC<Route>;
+}) as React.FC<Route>;

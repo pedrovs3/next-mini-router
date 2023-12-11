@@ -1,9 +1,11 @@
-export { default as NextMiniRouter } from './NextMiniRouter';
-export { default as Route } from './Route';
+import {Dispatch, SetStateAction} from "react";
+
+export * from './NextMiniRouter';
+export * from './Route';
 
 export interface RouteParams {
   navigate?: (path: string, data?: {}) => {};
   data?: object;
-  setData?: React.Dispatch<React.SetStateAction<any>>;
+  setData?: Dispatch<SetStateAction<any>>;
   defaultState?: { [propName: string]: any };
 }
