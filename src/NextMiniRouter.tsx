@@ -1,15 +1,44 @@
 import { useRouter } from 'next/router';
-import React, { useState, useEffect, memo, useCallback, useMemo } from 'react';
+import React, {memo, useCallback } from 'react';
 import { injectPropInComponent } from './utils';
 import RouterProvider from './context/RouterContext';
 import NotFound from "next/dist/client/components/not-found-error";
 
-export type NextMiniRouterProps = {
-  children: React.ReactElement;
+export interface INextMiniRouterProps {
+  children: React.ReactNode;
   defaultState: object;
 }
 
-export const NextMiniRouter: React.FC<NextMiniRouterProps> = memo(({children, defaultState}: NextMiniRouterProps) => {
+/**
+ * NextMiniRouter
+ * @augments {NextMiniRouter<{
+ *   children: React.ReactNode;
+ *   defaultState: object;
+ * }>}
+ * @param {INextMiniRouterProps} props
+ * @returns {JSX.Element}
+ * @constructor
+ * @category Components
+ * @subcategory NextMiniRouter
+ * @public
+ * @example
+ * import { NextMiniRouter } from 'next-mini-router'
+ *
+ * export const Test = () => {
+ *  return (
+ *  <NextMiniRouter defaultState={{ ...variables }}>
+ *    <Route path="/test1" >
+ *      <Test1 />
+ *    </Route>
+ *    <Route path="/test2" >
+ *      <Test2 />
+ *    </Route>
+ *  </NextMiniRouter>
+ *  )
+ * }
+ *    export default Test
+ */
+export const NextMiniRouter: React.FC<INextMiniRouterProps> = memo(({children, defaultState}: INextMiniRouterProps) => {
   const router = useRouter();
 
   const getChildrenToRender = (routes: string[], children: React.ReactNode) => {
@@ -32,4 +61,4 @@ export const NextMiniRouter: React.FC<NextMiniRouterProps> = memo(({children, de
       {getChildrenCallback(routes, children) || <NotFound/>}
     </RouterProvider>
   );
-}) as React.FC<NextMiniRouterProps>;
+}) as React.FC<INextMiniRouterProps>;

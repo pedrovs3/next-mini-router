@@ -1,20 +1,34 @@
 import { injectPropInComponent } from './utils';
 import { RouteParams } from './index';
-import React, { memo, useMemo } from 'react';
+import React, {ComponentType, memo} from 'react';
 import { useRouterContext } from './context/RouterContext';
 import {useRouter} from "next/router";
 
-export type Route = RouteParams & {
+export interface IRouteProps extends RouteParams {
   path: string;
+  children?: React.ReactNode;
 }
 
-type RouteProps = {
-  children: React.ReactElement;
-  defaultState?: object;
-}
-
-// @ts-ignore
-export const Route: React.FC<RouteProps> = memo(({ children, defaultState }: RouteProps) => {
+/**
+ * Route
+ * @param {IRouteProps} props
+ * @returns {JSX.Element}
+ * @constructor
+ * @category Components
+ * @subcategory NextMiniRouter
+ * @public
+ * @example
+ * import { Route } from 'next-mini-router'
+ *
+ * export const Test = () => {
+ * return (
+ * <NextMiniRouter defaultState={{ ...variables }}>
+ *  <Route path="/test1" >
+ *     <Test1 />
+ *  </Route>
+ * </NextMiniRouter>
+ */
+export const Route: React.MemoExoticComponent<ComponentType<IRouteProps>> = memo(({ children, defaultState }: IRouteProps) => {
   const router = useRouter();
 
   const { setData, data: contextData } = useRouterContext();
@@ -39,4 +53,4 @@ export const Route: React.FC<RouteProps> = memo(({ children, defaultState }: Rou
       })}
     </>
   );
-}) as React.FC<Route>;
+}) as React.MemoExoticComponent<ComponentType<IRouteProps>>;

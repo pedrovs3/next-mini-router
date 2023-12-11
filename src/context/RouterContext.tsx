@@ -11,6 +11,22 @@ export interface RouterProps {
 
 const RouterContext = createContext<Data | null>(null);
 
+/**
+ * Router
+ * @param children
+ * @constructor
+ * @category Components
+ * @subcategory NextMiniRouter
+ * @public
+ * @example
+ *
+ * import { Router } from 'next-mini-router'
+ *
+ * export const Test = () => {
+ * return (
+ * <Router>
+ *   <Route path="/test1" >
+ */
 const Router = ({ children }: RouterProps) => {
   const [data, setData] = useState<any>(null);
 

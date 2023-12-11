@@ -3,13 +3,22 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Virtual and dynamic routes made simple, like react-router-dom, but with the NextJs way",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js.map",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js.map",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "Lucas Santos",
   "license": "MIT",
@@ -20,11 +29,12 @@
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
     "eslint": "^8.51.0",
-    "prettier": "^3.0.3",
-    "react": "^18.2.0",
-    "typescript": "^5.2.2"
+    "prettier": "^3.0.3"
   },
   "dependencies": {
-    "next": "^14.0.4"
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.2.2"
   }
 }
