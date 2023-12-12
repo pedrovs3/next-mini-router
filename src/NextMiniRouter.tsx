@@ -11,10 +11,7 @@ export interface INextMiniRouterProps {
 
 /**
  * NextMiniRouter
- * @augments {NextMiniRouter<{
- *   children: React.ReactNode;
- *   defaultState: object;
- * }>}
+ * @augments {NextMiniRouter<{children: React.ReactNode; defaultState: object;}>}
  * @param {INextMiniRouterProps} props
  * @returns {JSX.Element}
  * @constructor
@@ -26,30 +23,29 @@ export interface INextMiniRouterProps {
  *
  * export const Test = () => {
  *  return (
- *  <NextMiniRouter defaultState={{ ...variables }}>
- *    <Route path="/test1" >
- *      <Test1 />
- *    </Route>
- *    <Route path="/test2" >
- *      <Test2 />
- *    </Route>
- *  </NextMiniRouter>
- *  )
- * }
- *    export default Test
- */
+ *    <NextMiniRouter defaultState={{ ...variables }}>
+ *      <Route path="/test1" >
+ *        <Test1 />
+ *      </Route>
+ *      <Route path="/test2" >
+ *        <Test2 />
+ *      </Route>
+ *    </NextMiniRouter>
+ * )}
+ * 
+ * export default Test
+*/
 export const NextMiniRouter: React.FC<INextMiniRouterProps> = memo(({children, defaultState}: INextMiniRouterProps) => {
   const router = useRouter();
 
   const getChildrenToRender = (routes: string[], children: React.ReactNode) => {
     const currentRoute = `/${routes.join('/')}`;
 
-    // @ts-ignore
     return React.Children.map(children, (element) => {
       if (!React.isValidElement(element)) return;
       if (element.props?.path === currentRoute)
         return injectPropInComponent(element, {defaultState});
-    })[0];
+    })?.[0];
   };
 
   const getChildrenCallback = useCallback(getChildrenToRender, []);
@@ -61,4 +57,4 @@ export const NextMiniRouter: React.FC<INextMiniRouterProps> = memo(({children, d
       {getChildrenCallback(routes, children) || <NotFound/>}
     </RouterProvider>
   );
-}) as React.FC<INextMiniRouterProps>;
+});

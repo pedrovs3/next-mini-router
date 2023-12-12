@@ -40,7 +40,7 @@ export const Route: React.MemoExoticComponent<ComponentType<IRouteProps>> = memo
       shallow: true,
     });
 
-    data && setData(data);
+    data && setData && setData(data);
   };
 
   return (
@@ -53,4 +53,4 @@ export const Route: React.MemoExoticComponent<ComponentType<IRouteProps>> = memo
       })}
     </>
   );
-}) as React.MemoExoticComponent<ComponentType<IRouteProps>>;
+});

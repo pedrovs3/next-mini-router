@@ -1,11 +1,11 @@
 import React, { createContext, useState, useContext } from 'react';
 
-export interface Data {
+interface Data {
   data: any;
   setData: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export interface RouterProps {
+interface RouterProps {
   children: React.ReactNode;
 }
 
@@ -45,8 +45,7 @@ const Router = ({ children }: RouterProps) => {
 export function useRouterContext() {
   const context = useContext(RouterContext);
 
-  // @ts-ignore
-  const { data, setData } = context;
+  const { data, setData } = context || {};
 
   return {
     data,
