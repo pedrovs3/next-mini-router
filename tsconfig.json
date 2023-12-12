@@ -1,18 +1,10 @@
 {
-  "include": ["src/**/*"],
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
+    "target": "es2016",
+    "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "lib": ["DOM", "ES2015"]
-  },
-  "exclude": ["node_modules", "dist"]
+    "skipLibCheck": true
+  }
 }
