@@ -2,7 +2,8 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { injectPropInComponent } from './utils'
 import { Router as RouterProvider } from './context/RouterContext'
-import { NotFoundPage } from './page/not-found-page'
+import { NotFoundPage } from './page/NotFoundPage.tsx'
+
 interface INextMiniRouterProps {
   children: React.ReactNode
   defaultState: object
@@ -56,7 +57,7 @@ export const NextMiniRouter: React.FC<INextMiniRouterProps> = React.memo(
 
     return (
       <RouterProvider>
-        {getChildrenCallback(routes, children) || <NotFoundPage />}
+        {getChildrenCallback(routes, children) || <NotFoundPage/>}
       </RouterProvider>
     )
   }
