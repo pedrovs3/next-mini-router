@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { memo, useCallback } from 'react'
+import React from 'react'
 import { injectPropInComponent } from './utils'
 import { Router as RouterProvider } from './context/RouterContext'
 import { NotFoundPage } from './page/not-found-page'
@@ -34,7 +34,7 @@ interface INextMiniRouterProps {
  *
  * export default Test
  */
-export const NextMiniRouter: React.FC<INextMiniRouterProps> = memo(
+export const NextMiniRouter: React.FC<INextMiniRouterProps> = React.memo(
   ({ children, defaultState }: INextMiniRouterProps) => {
     const router = useRouter()
 
@@ -50,7 +50,7 @@ export const NextMiniRouter: React.FC<INextMiniRouterProps> = memo(
       })?.[0]
     }
 
-    const getChildrenCallback = useCallback(getChildrenToRender, [])
+    const getChildrenCallback = React.useCallback(getChildrenToRender, [])
 
     const [, , ...routes] = router.query.routeData as string[]
 

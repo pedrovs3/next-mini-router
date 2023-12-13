@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react'
+import React from 'react'
 
 interface Data {
   data: any
@@ -9,7 +9,7 @@ interface RouterProps {
   children: React.ReactNode
 }
 
-const RouterContext = createContext<Data | null>(null)
+const RouterContext = React.createContext<Data | null>(null)
 
 /**
  * Router
@@ -28,7 +28,7 @@ const RouterContext = createContext<Data | null>(null)
  *   <Route path="/test1" >
  */
 export const Router = ({ children }: RouterProps) => {
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = React.useState<any>(null)
 
   return (
     <RouterContext.Provider
@@ -43,7 +43,7 @@ export const Router = ({ children }: RouterProps) => {
 }
 
 export function useRouterContext () {
-  const context = useContext(RouterContext)
+  const context = React.useContext(RouterContext)
 
   const { data, setData } = context ?? {}
 
