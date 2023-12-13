@@ -1,6 +1,6 @@
 {
   "name": "@next-mini-router/core",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Virtual and dynamic routes made simple, like react-router-dom, but with the NextJs way",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,7 +12,8 @@
     "test": "jest --coverage"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "keywords": [
     "router",

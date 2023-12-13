@@ -1,5 +1,11 @@
 # @next-mini-router/core
 
+## 1.1.2
+
+### Patch Changes
+
+- add README.md to npm package
+
 ## 1.1.1
 
 ### Patch Changes
